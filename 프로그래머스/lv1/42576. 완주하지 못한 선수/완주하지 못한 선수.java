@@ -8,12 +8,9 @@ class Solution {
         for(String partic : completion)
             map.put(partic,map.get(partic)-1);
         
-        Iterator<Map.Entry<String,Integer>> itr = map.entrySet().iterator();
-        
-        while (itr.hasNext()){
-            Map.Entry<String, Integer> entry = itr.next();
-            if(entry.getValue()!=0)
-                return entry.getKey();
+            for(String k : map.keySet()){
+            if(map.get(k)!=0)
+                return k;
         }
 
         return "";
