@@ -1,22 +1,24 @@
+import java.util.*;
+
 class Solution {
     public int[] solution(String s) {
+        Map<Character, Integer> map = new HashMap<>();
         char[] text = s.toCharArray();      //배열을 넣을 수 잇다.
-//        char tmp = '\u0000'; O
-//        char tmp = = null; X
-
-
-        int[] result = new int[text.length];    //값을 받을 것이다.
-
-        for(int i = 0 ; i < text.length ; i ++){
-            int num = -1;
-            for(int j = 0 ; j <i ; j++){
-                if(text[i]==text[j]) num = i - j;
-            }
-            result[i] = num;
-            
+        for (char characterOfString : text) {
+            map.put(characterOfString,map.getOrDefault(characterOfString,-1)+1);
+            //키가 없으면 -1을 반환하라 아니면 해당 키의 벨류를 반환해라.
         }
+        int[] result = new int[map.size()];
+
+        int i = 0;
+        for (Integer value : map.values()) {
+            result[i] = value;
+        }
+
+
+
+
 
         return result;
     }
-
 }
