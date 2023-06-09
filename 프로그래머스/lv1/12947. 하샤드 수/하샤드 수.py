@@ -4,9 +4,4 @@
     즉 자릿수의 합을 구하는 로직 필요
 '''
 def solution(x):
-    answer = True 
-    divid = 0
-    for i in str(x):
-        divid += int(i)
-    
-    return x % divid == 0
+    return x % sum([int(i) for i in str(x)]) == 0
