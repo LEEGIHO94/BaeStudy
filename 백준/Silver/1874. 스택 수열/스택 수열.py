@@ -6,7 +6,7 @@ tmp = 0
 d = deque()
 d.append(0)
 answer = ""
-
+ls = list()
 for _ in range(n):
     num = int(sys.stdin.readline())
 
@@ -15,21 +15,24 @@ for _ in range(n):
             if tmp < num:
                 tmp += 1
                 d.append(tmp)
-                answer += "+\n"
+                ls.append("+")
             else:
                 answer = "NO"
                 break
         elif d[-1] == num:
             d.pop()
-            answer += "-\n"
+            ls.append("-")
             break
         else:  # 최대 값보다 작을 경우
             if d[-1] == 0:
                 answer = "NO"
                 break
             d.pop()
-            answer += "-\n"
+            ls.append("-")
 
     if answer == "NO":
         break
-print(answer)
+if "NO" in answer:
+    print(answer)
+else:
+    print("\n".join(ls))
