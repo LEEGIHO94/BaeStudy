@@ -1,22 +1,23 @@
-import java.util.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String[] str = br.readLine().split(" ");
-        int A = Integer.parseInt(str[0]);
-        int B = Integer.parseInt(str[1]);
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int num1 = Integer.parseInt(st.nextToken());
+        int num2 = Integer.parseInt(st.nextToken());
+        System.out.println(gcd(num1,num2));
+        System.out.println(lcm(num1,num2));
 
-        int gcd = gcd(A,B);
-        int lcm = A*B / gcd;
-        System.out.println(gcd);
-        System.out.println(lcm);
     }
-    public static int gcd(int num1, int num2){
-        if (num2 == 0) {
-            return num1;
-        }
-        return gcd(num2, num1%num2);
+
+    private static int gcd(int num1, int num2){
+        return num2 == 0 ? num1 : gcd(num2, num1%num2);
+    }
+    private static int lcm(int num1, int num2){
+        return num1 * num2 / gcd(num1,num2);
     }
 }
